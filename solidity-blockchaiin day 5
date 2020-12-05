@@ -1,0 +1,28 @@
+pragma solidity >=0.5.13 < 0.7.3;
+
+contract project{
+     address public owner; 
+      
+    
+    mapping(address=>uint) public addressToMap;
+    
+    
+    
+  constructor()public{
+      owner = msg.sender;
+      
+     }
+    
+     function DepositEther()public payable {
+        addressToMap[msg.sender]=msg.value;
+        
+      }
+ function withdrawEthers(address payable _getadds)public payable {
+     _getadds.transfer(addressToMap[_getadds]);
+     
+ }
+   function EthersContractHave()public view returns(uint256){
+       return address(this).balance;
+       
+   }
+}
